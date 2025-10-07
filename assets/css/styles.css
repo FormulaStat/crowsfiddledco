@@ -192,3 +192,11 @@ body{
     transform: rotate(-45deg) translate(6px, -6px);
   }
 }
+
+@media (max-width: 560px){
+  .lead{font-size:15px}
+  .hero-copy h1{font-size:26px}
+  .segment-icon{width:48px;height:48px}
+  .project img{height:160px}
+  .subscribe-form{flex-direction:column}
+}
