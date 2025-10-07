@@ -149,6 +149,49 @@ body{
 .reveal.visible{opacity:1;transform:none}
 
 /* responsive */
+/* Mobile Navigation Fix */
+@media (max-width: 980px) {
+  .nav {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    transform: translateY(-20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s ease;
+    z-index: 999;
+  }
+  .nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+  }
+  .nav-link {
+    display: block;
+    font-size: 16px;
+    color: #111827;
+  }
+  .mobile-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .mobile-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+}
 @media (max-width: 980px){
   .hero-inner{flex-direction:column;align-items:flex-start;padding:36px 0}
   .hero-copy h1{font-size:32px}
