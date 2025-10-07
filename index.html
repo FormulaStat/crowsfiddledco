@@ -3,371 +3,182 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Crowsfiddled Company Ltd — Real Estate Investment & Partnerships</title>
-  <meta name="description" content="Crowsfiddled Company Ltd — Invest in high-yield real estate opportunities across Morrocco. Equity, profit-share, and silent-investor options with transparent reporting." />
-  <meta name="theme-color" content="#E4B343" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="Crowsfiddled Company Ltd — Real Estate Investment" />
-  <meta property="og:description" content="Invest. Partner. Prosper. Professional real estate investment opportunities across Morrocco." />
-  <meta property="og:type" content="website" />
+  <title>Crowsfiddled Company Ltd — Building Tomorrow's Property Wealth</title>
+  <meta name="description" content="Crowsfiddled — Morocco-headquartered global real estate investment & partnerships. Engineering-led projects, fully regulated, cross-border investors welcome." />
+  <meta property="og:title" content="Crowsfiddled — Real Estate Investment & Partnerships" />
   <link rel="icon" href="favicon.ico" />
-
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <!-- NAVBAR -->
-  <header id="site-header" class="site-header">
+
+  <!-- HEADER / NAV -->
+  <header id="site-header" class="site-header" role="banner">
     <div class="container header-inner">
-      <a class="brand" href="#">
+      <a class="brand" href="index.html" aria-label="Crowsfiddled home">
         <img src="assets/images/logo.png" alt="Crowsfiddled logo" class="logo" />
         <span class="brand-text">Crowsfiddled</span>
       </a>
 
-      <nav class="nav" id="nav">
+      <nav id="nav" class="nav" role="navigation" aria-label="Main">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link active">Home</a></li>
           <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="#investments" class="nav-link">Investments</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#partnership" class="nav-link">Partnership</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="investments.html" class="nav-link">Investments</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="partnership.html" class="nav-link">Partnerships</a></li>
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+          <li><a href="compliance.html" class="nav-link">Compliance</a></li>
+          <li><a href="contact.html" class="nav-link cta">Contact</a></li>
         </ul>
       </nav>
 
-      <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle menu">
+      <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="hero-section">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="assets/videos/hero-loop.mp4" type="video/mp4" />
-      <!-- Fallback image -->
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <div class="hero-copy">
-        <h1>Building the Future of Real Estate Investment</h1>
-        <p class="lead">Unlock high-yield property opportunities across Morocco’s fastest-growing cities. Invest. Partner. Prosper.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#investments">Explore Investments</a>
-          <a class="btn btn-outline" href="#partnership">Become a Partner</a>
+  <main>
+    <section id="home" class="hero-section" aria-labelledby="hero-title">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/hero-poster.jpg">
+        <source src="assets/videos/hero-loop.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy" >
+          <h1 id="hero-title">Building Tomorrow’s Property Wealth</h1>
+          <p class="lead">Curated real estate investments and strategic partnerships across Morocco and global markets — engineered for growth, managed for trust.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="assets/docs/investment-pack.pdf" target="_blank" rel="noopener">Get Investment Pack</a>
+            <a class="btn btn-outline" href="#contact">Book Discovery Call</a>
+          </div>
+
+          <ul class="trust-strip" aria-hidden="true">
+            <li>International Financial Framework</li>
+            <li>Morocco HQ — Casablanca</li>
+            <li>Compliance: ANCFCC • DGI • IFSA</li>
+          </ul>
+        </div>
+
+        <div class="hero-stats" aria-hidden="true">
+          <div class="stat">
+            <div class="stat-value" data-target="8">0</div>
+            <div class="stat-label">Operating Cities</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-target="25">0</div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" data-target="28">0</div>
+            <div class="stat-label">Avg. ROI (%)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK INTRO -->
+    <section id="what" class="container section">
+      <h2 class="section-title">What We Do</h2>
+      <p class="section-sub">We identify, develop and manage real estate investments designed for capital growth and income generation — with full legal compliance and engineering oversight.</p>
+
+      <div class="cards-grid">
+        <article class="invest-card">
+          <h3>Land Acquisition & Flipping</h3>
+          <p>Targeted land buys, cadastral verification, minimal development and resale for capital uplift.</p>
+        </article>
+
+        <article class="invest-card">
+          <h3>Residential Development</h3>
+          <p>Design and construct modern homes and gated communities with sustainable value in mind.</p>
+        </article>
+
+        <article class="invest-card">
+          <h3>Rental & Commercial Assets</h3>
+          <p>Long term rental portfolios and mixed-use developments for steady cashflow.</p>
+        </article>
+
+        <article class="invest-card">
+          <h3>Short-Let & Hospitality</h3>
+          <p>Premium short-stay units in high-demand business and tourist corridors.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS (teaser) -->
+    <section id="projects" class="container section">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-sub">Recent and ongoing projects demonstrating our engineering edge and investor returns.</p>
+
+      <div class="project-grid">
+        <figure class="project">
+          <img src="assets/images/project-1.jpg" alt="Sunrise Estates — Casablanca" loading="lazy">
+          <figcaption><strong>Sunrise Estates — Casablanca</strong><br>Residential community. Completed.</figcaption>
+        </figure>
+
+        <figure class="project">
+          <img src="assets/images/project-2.jpg" alt="Golden Park Residence — Marrakech" loading="lazy">
+          <figcaption><strong>Golden Park Residence — Marrakech</strong><br>Mixed-use development. Ongoing.</figcaption>
+        </figure>
+
+        <figure class="project">
+          <img src="assets/images/project-3.jpg" alt="Morocco Short-Let Suites — Rabat" loading="lazy">
+          <figcaption><strong>Short-Let Suites — Rabat</strong><br>Hospitality units. Active.</figcaption>
+        </figure>
+      </div>
+
+      <div class="projects-cta">
+        <a class="btn btn-primary" href="projects.html">View Full Portfolio</a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+      <div class="container cta-inner">
+        <h3>Ready to invest or partner?</h3>
+        <p>Request our Investment Pack and a personalised ROI projection for your capital.</p>
+        <a class="btn btn-primary" href="assets/docs/investment-pack.pdf" target="_blank" rel="noopener">Request Brochure</a>
+      </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <footer id="contact" class="footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <h3>Crowsfiddled Company Ltd</h3>
+          <p>Headquarters — Casablanca, Kingdom of Morocco</p>
+          <p class="muted">Licensed real estate operations • ANCFCC & DGI aligned</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>Email: <a href="mailto:fiddledcfc@gmail.com">fiddledcfc@gmail.com</a></p>
+          <p>Compliance: <a href="mailto:compliance@crowsfiddled.com">compliance@crowsfiddled.com</a></p>
+          <p>Phone: +212 (update)</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Subscribe</h4>
+          <form id="subscribe-form" class="subscribe-form" action="#" onsubmit="return false;" aria-label="Subscribe to updates">
+            <input id="subscribe-email" type="email" placeholder="Email address" aria-label="Email address" required>
+            <button class="btn btn-secondary" id="subscribe-btn" type="submit">Subscribe</button>
+          </form>
         </div>
       </div>
 
-      <div class="hero-stats" aria-hidden="true">
-        <div class="stat">
-          <div class="stat-value" data-count="8">0</div>
-          <div class="stat-label">Cities Active</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value" data-count="25">0</div>
-          <div class="stat-label">Successful Projects</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value" data-count="30">0</div>
-          <div class="stat-label">Avg. ROI (%)</div>
-        </div>
+      <div class="container copyright">
+        <div>© <span id="year"></span> Crowsfiddled Company Ltd. All rights reserved.</div>
+        <div class="muted">Disclaimer: Investments carry risk. See full terms & compliance for details.</div>
       </div>
-    </div>
-  </section>
+    </footer>
+  </main>
 
-  <!-- ABOUT -->
-  <section id="about" class="container section about-section">
-    <div class="section-grid">
-      <div class="about-text">
-        <h2>Who We Are</h2>
-        <p><strong>Crowsfiddled Company Limited</strong> is a registered global real estate investment and development firm dedicated to delivering sustainable, profitable property solutions across the globe. We specialize in residential development, land acquisition & flipping, rental portfolios, and short-let commercial units.</p>
-
-        <h3>Our Mission</h3>
-        <p>To provide transparent, high-return real estate investment opportunities that empower investors locally and internationally.</p>
-
-        <a class="btn btn-secondary" href="#projects">View Projects</a>
-      </div>
-
-      <div class="about-cards">
-        <div class="card">
-          <h4>Integrity & Compliance</h4>
-          <p>Registered with CAC and structured to meet legal and financial governance standards.</p>
-        </div>
-        <div class="card">
-          <h4>Engineering-Led Execution</h4>
-          <p>Founded by a civil engineer — we prioritize build quality, timelines, and cost control.</p>
-        </div>
-        <div class="card">
-          <h4>Investor-Centric</h4>
-          <p>Transparent reporting, structured agreements, and predictable ROI models for all partners.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INVESTMENTS -->
-  <section id="investments" class="container section investments-section">
-    <h2 class="section-title">Investment Opportunities</h2>
-    <p class="section-sub">
-      Flexible entry tiers for individuals and institutions from $3,000 to $1B+
-    </p>
-
-    <div class="cards-grid">
-      <article class="invest-card">
-        <h3>Land Flipping</h3>
-        <p>Buy undervalued plots, add strategic improvements, and realize fast appreciation.</p>
-        <p class="muted">Projected ROI: <strong>25–40% (12 months)</strong></p>
-        <a href="#contact" class="link-cta">Invest Now →</a>
-      </article>
-
-      <article class="invest-card">
-        <h3>Residential Development</h3>
-        <p>Join development projects building modern homes for sale and lease in emerging hubs.</p>
-        <p class="muted">Projected ROI: <strong>20–30%</strong></p>
-        <a href="#contact" class="link-cta">Partner With Us →</a>
-      </article>
-
-      <article class="invest-card">
-        <h3>Rental Income Properties</h3>
-        <p>Invest in rental-ready units for steady, predictable cashflow.</p>
-        <p class="muted">Projected Net Income: <strong>15–22% annually</strong></p>
-        <a href="#contact" class="link-cta">Learn More →</a>
-      </article>
-
-      <article class="invest-card">
-        <h3>Short-Let Commercial Units</h3>
-        <p>High-demand short-stay units in prime areas delivering premium yields.</p>
-        <p class="muted">Projected ROI: <strong>20–35% annually</strong></p>
-        <a href="#contact" class="link-cta">Apply →</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- KEY METRICS -->
-  <section id="metrics" class="container section about-section">
-    <h2 class="section-title">Key Metrics & What We Mean</h2>
-    <p class="section-sub">
-      These metrics define the pulse of the global real estate and construction market that Crowsfiddled participates in.
-    </p>
-
-    <div class="about-cards">
-      <div class="card">
-        <h4>Real Estate Investment / Capital Flows</h4>
-        <p>Tracks how much capital is being deployed into real estate globally — covering commercial, residential, development, and infrastructure assets.</p>
-      </div>
-      <div class="card">
-        <h4>Construction & Building Activity</h4>
-        <p>Measures the number, scale, and value of ongoing construction projects, including housing, commercial buildings, and major infrastructure developments.</p>
-      </div>
-      <div class="card">
-        <h4>Partnerships & Development Sites</h4>
-        <p>Includes cross-border investments, joint ventures, land acquisitions, and strategic collaborations that shape the international property landscape.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- GLOBAL ACTIVITY -->
-  <section id="global" class="container section projects-section">
-    <h2 class="section-title">Top Countries by Activity</h2>
-    <p class="section-sub">
-      Countries frequently leading in construction, investment, and real estate partnership activity:
-    </p>
-
-    <div class="project-grid">
-      <figure class="project">
-        <figcaption>
-          <h4>China</h4>
-          <p>The world’s largest construction market — massive residential and infrastructure expansion across major provinces.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <figcaption>
-          <h4>United States</h4>
-          <p>High investment volumes and continuous commercial and residential development; global leader in real estate innovation.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <figcaption>
-          <h4>India</h4>
-          <p>Rapid urbanization with new housing, smart city projects, and rising foreign investment in real estate and infrastructure.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <figcaption>
-          <h4>United Arab Emirates</h4>
-          <p>Massive luxury real estate, tourism infrastructure, and smart-city projects driving global attention and capital inflow.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <figcaption>
-          <h4>Saudi Arabia</h4>
-          <p>Transformative state-led developments under Vision 2030 — from NEOM to major housing and tourism programs.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <figcaption>
-          <h4>Germany</h4>
-          <p>One of Europe’s top real estate and construction markets, leading in sustainable renovation and green building initiatives.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <figcaption>
-          <h4>United Kingdom</h4>
-          <p>High-value commercial, residential, and mixed-use projects supported by robust joint-venture investment flows.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <figcaption>
-          <h4>Australia</h4>
-          <p>Vibrant real estate investment environment with active partnerships and large-scale construction projects nationwide.</p>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- GLOBAL PRESENCE -->
-  <section id="presence" class="container section partnership-section">
-    <h2 class="section-title">Global Presence & Vision</h2>
-    <p class="section-sub">
-      Crowsfiddled Company Ltd operates as a global real estate investment and partnership brand headquartered in Africa — with an international office in <strong>Morocco</strong> serving as a bridge to global investors and cross-border developments.
-    </p>
-
-    <div class="partnership-grid">
-      <div class="partner-card">
-        <h3>Expanding Across Borders</h3>
-        <p>We connect African real estate opportunities with investors from Europe, the Middle East, Asia, and the Americas through structured partnerships and joint ventures.</p>
-      </div>
-
-      <div class="partner-card">
-        <h3>Elite Global Partnerships</h3>
-        <p>Our projects attract private investors, institutions, and strategic partners who believe in sustainable growth and long-term value creation.</p>
-      </div>
-
-      <div class="partner-card">
-        <h3>City-to-City Development</h3>
-        <p>From Lagos to Dubai, from Casablanca to London — we execute high-value projects in key cities and regions where demand, innovation, and growth intersect.</p>
-      </div>
-    </div>
-
-    <div class="partnership-cta">
-      <a class="btn btn-primary" href="#contact">Join the Global Partnership</a>
-    </div>
-  </section>
-  
-  <!-- PROJECTS -->
-  <section id="projects" class="container section projects-section">
-    <h2 class="section-title">Featured Projects</h2>
-    <p class="section-sub">A selection of our ongoing and completed developments across key cities.</p>
-
-    <div class="project-grid">
-      <figure class="project">
-        <img src="assets/images/project-1.jpg" alt="Sunrise Estates Enugu" loading="lazy">
-        <figcaption>
-          <h4>Sunrise Estates — Enugu</h4>
-          <p>Residential enclave; modern finishes; completed units with high demand.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <img src="assets/images/project-2.jpg" alt="Golden Park Residence Asaba" loading="lazy">
-        <figcaption>
-          <h4>Golden Park Residence — Asaba</h4>
-          <p>Mixed-income development with rental and sale options.</p>
-        </figcaption>
-      </figure>
-
-      <figure class="project">
-        <img src="assets/images/project-3.jpg" alt="Lagos Short-Let Suites" loading="lazy">
-        <figcaption>
-          <h4>Lagos Short-Let Suites</h4>
-          <p>High-occupancy short-let units in business districts.</p>
-        </figcaption>
-      </figure>
-    </div>
-
-    <div class="projects-cta">
-      <a class="btn btn-primary" href="#contact">Request Project Pack (PDF)</a>
-    </div>
-  </section>
-
-  <!-- PARTNERSHIP -->
-  <section id="partnership" class="container section partnership-section">
-    <h2 class="section-title">Partnership Options</h2>
-    <p class="section-sub">We offer tailored structures: equity, profit-sharing, silent investment, and co-development.</p>
-
-    <div class="partnership-grid">
-      <div class="partner-card">
-        <h3>Equity Partnership</h3>
-        <p>Acquire ownership share and benefit from dividends and long-term capital appreciation.</p>
-      </div>
-
-      <div class="partner-card">
-        <h3>Profit-Sharing</h3>
-        <p>Invest capital into a project and receive a clearly defined share of the profits.</p>
-      </div>
-
-      <div class="partner-card">
-        <h3>Silent Investor</h3>
-        <p>Fully passive role. We manage operations while you receive returns and regular reports.</p>
-      </div>
-    </div>
-
-    <div class="partnership-cta">
-      <a class="btn btn-outline" href="#contact">Schedule Discovery Call</a>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section class="cta-banner">
-    <div class="container cta-inner">
-      <h3>Ready to invest or partner?</h3>
-      <p>Contact us today for the investment pack, legal agreements, and a personalised ROI projection.</p>
-      <a class="btn btn-primary" href="#contact">Get Started</a>
-    </div>
-  </section>
-
-  <!-- CONTACT / FOOTER -->
-  <footer id="contact" class="footer">
-    <div class="container footer-grid">
-      <div class="footer-col">
-        <h3>Crowsfiddled Company Ltd</h3>
-        <p>Building Africa’s real estate future, one investment at a time.</p>
-        <p class="muted">Locations: Anambra · Enugu · Asaba · Lagos · Jos · Owerri · Umuahia · Abuja</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <p>Email: <a href="mailto:fiddledcfc@gmail.com">fiddledcfc@gmail.com</a></p>
-        <p>Phone: <a href="tel:+2348132926642">+234 813 292 6642</a></p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Subscribe</h4>
-        <p>Get the quarterly investment bulletin.</p>
-        <form id="subscribe-form" class="subscribe-form" action="#" onsubmit="return false;">
-          <input id="subscribe-email" type="email" placeholder="Email address" aria-label="Email address" required>
-          <button class="btn btn-secondary" id="subscribe-btn" type="submit">Subscribe</button>
-        </form>
-      </div>
-    </div>
-
-    <div class="container copyright">
-      <div>© <span id="year"></span> Crowsfiddled Company Ltd. All rights reserved.</div>
-      <div class="muted">Disclaimer: All investments carry risk. Past performance is not a guarantee of future returns.</div>
-    </div>
-  </footer>
-
-  <script src="assets/js/main.js"></script>
+  <!-- Scripts -->
+  <script src="assets/js/scripts.js"></script>
 </body>
-        </html>
+</html>
