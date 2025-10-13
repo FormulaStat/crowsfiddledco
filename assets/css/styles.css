@@ -148,50 +148,7 @@ body{
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* responsive */
-/* Mobile Navigation Fix */
-@media (max-width: 980px) {
-  .nav {
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 100%;
-    background: #ffffff;
-    border-top: 1px solid #e5e7eb;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    transform: translateY(-20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.35s ease;
-    z-index: 999;
-  }
-  .nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  .nav-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 18px 0;
-  }
-  .nav-link {
-    display: block;
-    font-size: 16px;
-    color: #111827;
-  }
-  .mobile-toggle.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
-  .mobile-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .mobile-toggle.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-  }
-}
+
 
 @media (max-width: 980px){
   .hero-inner{flex-direction:column;align-items:flex-start;padding:36px 0}
@@ -212,4 +169,79 @@ body{
   .segment-icon{width:48px;height:48px}
   .project img{height:160px}
   .subscribe-form{flex-direction:column}
+}
+
+/* ---------- MOBILE NAV FIX (replace or add inside @media (max-width:980px)) ---------- */
+
+/* Ensure the parent nav is positioned for the mobile dropdown */
+.nav {
+  position: absolute;
+  top: 70px;            /* matches header height */
+  right: 0;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid #e6e6e6;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06);
+  transform: translateY(-8px) scaleY(0.98);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform .32s cubic-bezier(.2,.9,.2,1), opacity .32s ease, visibility .32s;
+  z-index: 999;
+}
+
+/* When open — slide down + fade in */
+.nav.open {
+  transform: translateY(0) scaleY(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Stack the list vertically */
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0 22px;
+  margin: 0;
+}
+
+/* Larger tappable links */
+.nav-list .nav-link {
+  display: block;
+  width: 90%;
+  text-align: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+/* Hamburger -> X animation */
+.mobile-toggle { display:block; border:0; background:transparent; cursor:pointer; padding:8px; }
+.mobile-toggle .bar {
+  display:block;
+  width:22px;
+  height:2px;
+  background:var(--text);
+  margin:4px 0;
+  border-radius:2px;
+  transition: transform .28s ease, opacity .18s ease;
+}
+
+/* active state: transform bars into an X */
+.mobile-toggle.active .bar:nth-child(1){
+  transform: translateY(6px) rotate(45deg);
+}
+.mobile-toggle.active .bar:nth-child(2){
+  opacity: 0;
+}
+.mobile-toggle.active .bar:nth-child(3){
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Ensure nav is hidden on desktop only on small screens */
+@media (min-width: 981px) {
+  .nav { position: static; transform:none; opacity:1; visibility:visible; box-shadow:none; }
+  .mobile-toggle { display:none; }
 }
