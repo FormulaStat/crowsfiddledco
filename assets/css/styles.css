@@ -245,3 +245,14 @@ body{
   .nav { position: static; transform:none; opacity:1; visibility:visible; box-shadow:none; }
   .mobile-toggle { display:none; }
 }
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6,6,10,0.35);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .28s ease, visibility .28s;
+  z-index: 898;
+}
+.nav-overlay.open { opacity: 1; visibility: visible; }
