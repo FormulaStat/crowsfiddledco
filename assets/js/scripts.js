@@ -6,25 +6,59 @@
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
-/* -------------------------
-   Header & Mobile nav
-   ------------------------- */
-const header = $('#site-header');
-const mobileToggle = $('#mobile-toggle');
-const nav = $('#nav');
+/* ---------- MOBILE NAV TOGGLE — robust version ---------- */
+(function () {
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const nav = document.getElementById('nav');
+  const navList = nav ? nav.querySelector('.nav-list') : null;
 
-if (mobileToggle && nav) {
-  mobileToggle.addEventListener('click', () => {
-    const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
-    mobileToggle.setAttribute('aria-expanded', String(!expanded));
-    nav.classList.toggle('open');
-    mobileToggle.classList.toggle('active');
+  if (!mobileToggle || !nav) return;
+
+  function openNav() {
+    mobileToggle.classList.add('active');
+    nav.classList.add('open');
+    mobileToggle.setAttribute('aria-expanded', 'true');
+    // prevent background scroll when menu open
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closeNav() {
+    mobileToggle.classList.remove('active');
+    nav.classList.remove('open');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+  }
+
+  mobileToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = nav.classList.contains('open');
+    if (isOpen) closeNav(); else openNav();
   });
-}
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 30) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-});
+  // close when any navigation link is clicked (mobile)
+  if (navList) {
+    navList.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target && target.classList && target.classList.contains('nav-link')) {
+        // small delay to allow link activation on single-page anchors
+        setTimeout(closeNav, 160);
+      }
+    });
+  }
+
+  // close on outside click / tap
+  document.addEventListener('click', (e) => {
+    // if click is inside nav or toggle, ignore
+    if (nav.contains(e.target) || mobileToggle.contains(e.target)) return;
+    if (nav.classList.contains('open')) closeNav();
+  });
+
+  // close on ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
+  });
+
+})();
 
 /* -------------------------
    Animated counters
