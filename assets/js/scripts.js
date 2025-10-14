@@ -111,7 +111,14 @@ if ('IntersectionObserver' in window && reveals.length) {
 } else {
   reveals.forEach(r => r.classList.add('visible'));
 }
-
+// At end of your existing reveal logic:
+const projectEls = document.querySelectorAll('.project');
+projectEls.forEach(el => {
+  if (!el.classList.contains('reveal')) {
+    el.classList.add('reveal');
+  }
+});
+// The existing IntersectionObserver logic should mark .visible accordingly
 /* -------------------------
    Subscribe (placeholder)
    ------------------------- */
