@@ -256,3 +256,62 @@ body{
   z-index: 898;
 }
 .nav-overlay.open { opacity: 1; visibility: visible; }
+
+/* Featured Projects Section Fixes */
+
+/* Project card reveal and hover */
+.project {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.project:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(16,24,40,0.12);
+}
+
+/* Ensure images maintain aspect ratio and do not distort */
+.project img {
+  width: 100%;
+  height: auto;       /* instead of fixed height when possible */
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.project:hover img {
+  transform: scale(1.03);
+}
+
+/* Caption container */
+.project figcaption {
+  padding: 12px 8px 16px;
+  background-color: #fff;
+  color: var(--text);
+}
+
+/* Reveal project cards on scroll */
+.project, .project img, .project figcaption {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.project.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Spacing below project grid */
+#projects .projects-cta {
+  margin-top: 32px;
+  text-align: center;
+}
+
+/* On mobile: one column layout with simpler layout */
+@media (max-width: 640px) {
+  .project img {
+    height: 180px;
+  }
+  #projects .projects-cta {
+    margin-top: 24px;
+  }
+}
