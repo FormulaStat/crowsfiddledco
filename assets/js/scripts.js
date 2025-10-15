@@ -1,153 +1,173 @@
-/* assets/js/scripts.js
-   Robust global interactions: mobile nav, reveal, counters, subscribe placeholder
-*/
+/* ==========================================================================
+   Crowsfiddled — Global JavaScript
+   Author: Kasky | Version: Final Production
+   Purpose: Navigation, Scroll Animations, Counters, Parallax, UI
+   ========================================================================== */
 
 (() => {
-  // DOM helpers
-  const $ = (s) => document.querySelector(s);
-  const $$ = (s) => Array.from(document.querySelectorAll(s));
+  /* Utility Shortcuts */
+  const $ = sel => document.querySelector(sel);
+  const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-  /* ===== Mobile nav toggle ===== */
+  /* ---------------------------
+     1. MOBILE NAVIGATION
+     --------------------------- */
   const mobileToggle = $('#mobile-toggle');
   const nav = $('#nav');
 
-  const openNav = () => {
-    if (!mobileToggle || !nav) return;
-    mobileToggle.classList.add('active');
-    nav.classList.add('open');
-    mobileToggle.setAttribute('aria-expanded', 'true');
-    document.documentElement.style.overflow = 'hidden';
-  };
-  const closeNav = () => {
-    if (!mobileToggle || !nav) return;
-    mobileToggle.classList.remove('active');
-    nav.classList.remove('open');
-    mobileToggle.setAttribute('aria-expanded', 'false');
-    document.documentElement.style.overflow = '';
-  };
-
   if (mobileToggle && nav) {
-    mobileToggle.addEventListener('click', (e) => {
+    const openNav = () => {
+      mobileToggle.classList.add('active');
+      nav.classList.add('open');
+      mobileToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeNav = () => {
+      mobileToggle.classList.remove('active');
+      nav.classList.remove('open');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    };
+
+    mobileToggle.addEventListener('click', e => {
       e.stopPropagation();
       nav.classList.contains('open') ? closeNav() : openNav();
     });
 
-    // Close nav on link click
-    nav.addEventListener('click', (e) => {
-      const link = e.target.closest('.nav-link');
-      if (link && window.innerWidth <= 980) {
-        // close after slight delay to let anchor navigate
-        setTimeout(closeNav, 160);
-      }
-    });
-
-    // Close on outside click and ESC
-    document.addEventListener('click', (e) => {
+    // Close menu on outside click or ESC key
+    document.addEventListener('click', e => {
       if (!nav.contains(e.target) && !mobileToggle.contains(e.target) && nav.classList.contains('open')) {
         closeNav();
       }
     });
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && nav.classList.contains('open')) closeNav();
+    });
+
+    // Auto-close when clicking a link on mobile
+    $$('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 980) closeNav();
+      });
     });
   }
 
-  /* ===== Sticky header class on scroll ===== */
+  /* ---------------------------
+     2. STICKY HEADER SHADOW
+     --------------------------- */
   const header = $('#site-header');
   window.addEventListener('scroll', () => {
     if (!header) return;
-    if (window.scrollY > 26) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+    window.scrollY > 26 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
   });
 
-  /* ===== Animated counters ===== */
+  /* ---------------------------
+     3. STAT COUNTERS (Hero)
+     --------------------------- */
   const statEls = $$('.stat-value');
   if ('IntersectionObserver' in window && statEls.length) {
     const statObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target') || el.textContent, 10) || 0;
-        let start = 0, duration = 1200, startTime = null;
-        function step(ts) {
-          if (!startTime) startTime = ts;
-          const prog = Math.min((ts - startTime) / duration, 1);
-          el.textContent = Math.floor(prog * (target - start) + start);
-          if (prog < 1) requestAnimationFrame(step);
+        const target = parseInt(el.dataset.target || 0);
+        let start = 0;
+        const duration = 1500;
+        const startTime = performance.now();
+
+        function animateCounter(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          el.textContent = Math.floor(progress * (target - start) + start);
+          if (progress < 1) requestAnimationFrame(animateCounter);
         }
-        requestAnimationFrame(step);
+        requestAnimationFrame(animateCounter);
         statObserver.unobserve(el);
       });
-    }, { threshold: 0.5 });
-    statEls.forEach(e => statObserver.observe(e));
-  } else {
-    statEls.forEach(e => e.textContent = e.getAttribute('data-target') || e.textContent);
+    }, { threshold: 0.6 });
+    statEls.forEach(el => statObserver.observe(el));
   }
 
-  /* ===== Reveal on scroll (for .reveal elements) ===== */
-  const reveals = $$('.reveal');
-  if ('IntersectionObserver' in window && reveals.length) {
-    const obs = new IntersectionObserver(entries => {
+  /* ---------------------------
+     4. REVEAL ON SCROLL
+     --------------------------- */
+  const revealEls = $$('.reveal');
+  if ('IntersectionObserver' in window && revealEls.length) {
+    const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
           obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
-    reveals.forEach(r => obs.observe(r));
+    }, { threshold: 0.2 });
+    revealEls.forEach(el => observer.observe(el));
   } else {
-    reveals.forEach(r => r.classList.add('visible'));
+    revealEls.forEach(el => el.classList.add('visible'));
   }
 
-  /* Ensure project figures have .reveal so observer picks them up */
-  $$('.project').forEach(el => { if (!el.classList.contains('reveal')) el.classList.add('reveal'); });
+  /* ---------------------------
+     5. HERO PARALLAX EFFECT
+     --------------------------- */
+  const heroVideo = $('.hero-video');
+  const heroOverlay = $('.hero-overlay');
 
-  /* ===== Subscribe placeholder ===== */
+  let ticking = false;
+  function handleParallax() {
+    const scrollY = window.scrollY;
+    if (heroVideo) heroVideo.style.transform = `translateY(${scrollY * 0.08}px) scale(1.35)`;
+    if (heroOverlay) heroOverlay.style.transform = `translateY(${scrollY * 0.04}px) scale(1.2)`;
+    if (scrollY > 50) document.body.classList.add('scrolled');
+    else document.body.classList.remove('scrolled');
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(handleParallax);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  /* ---------------------------
+     6. SUBSCRIBE FORM (Mock)
+     --------------------------- */
   const subscribeForm = $('#subscribe-form');
   if (subscribeForm) {
-    subscribeForm.addEventListener('submit', (e) => {
+    subscribeForm.addEventListener('submit', e => {
       e.preventDefault();
-      const email = (subscribeForm.querySelector('input[type="email"]') || {}).value || '';
-      if (!email || !email.includes('@')) { alert('Please enter a valid email address'); return; }
-      // TODO: Replace with real integration (SendGrid, Resend, etc.)
-      alert('Thank you — subscription received: ' + email);
+      const emailField = $('#subscribe-email');
+      const email = emailField.value.trim();
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+      alert(`Thank you for subscribing, ${email}!`);
       subscribeForm.reset();
     });
   }
 
-  /* ===== Cleanup on unload (revoke blob URLs if any) ===== */
+  /* ---------------------------
+     7. FOOTER YEAR AUTO-UPDATE
+     --------------------------- */
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------------------------
+     8. ACCESSIBILITY: Focus Skip-Link
+     --------------------------- */
+  const skipLink = document.querySelector('.skip-link');
+  if (skipLink) {
+    skipLink.addEventListener('focus', () => skipLink.style.position = 'static');
+    skipLink.addEventListener('blur', () => skipLink.style.position = 'absolute');
+  }
+
+  /* ---------------------------
+     9. PERFORMANCE CLEANUP
+     --------------------------- */
   window.addEventListener('unload', () => {
-    const links = document.querySelectorAll('a[download]');
-    links.forEach(a => {
+    document.querySelectorAll('a[download]').forEach(a => {
       const href = a.getAttribute('href') || '';
       if (href.startsWith('blob:')) URL.revokeObjectURL(href);
     });
   });
-})();
-
-/* ======================================================
-   Crowsfiddled — Hero Parallax Scroll Controller
-   ====================================================== */
-(() => {
-  const heroVideo = document.querySelector('.hero-video');
-  const heroOverlay = document.querySelector('.hero-overlay');
-  let lastScrollY = 0;
-
-  function updateParallax() {
-    const scrollY = window.scrollY || window.pageYOffset;
-    const translateVideo = Math.min(scrollY * 0.08, 50); // smooth offset
-    const translateOverlay = Math.min(scrollY * 0.04, 25);
-
-    if (heroVideo) heroVideo.style.transform = `translateY(${translateVideo}px) scale(1.35)`;
-    if (heroOverlay) heroOverlay.style.transform = `translateY(${translateOverlay}px) scale(1.2)`;
-
-    // toggle subtle blur as user scrolls down
-    if (scrollY > 50) document.body.classList.add('scrolled');
-    else document.body.classList.remove('scrolled');
-
-    lastScrollY = scrollY;
-  }
-
-  window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
 })();
