@@ -125,3 +125,29 @@
     });
   });
 })();
+
+/* ======================================================
+   Crowsfiddled — Hero Parallax Scroll Controller
+   ====================================================== */
+(() => {
+  const heroVideo = document.querySelector('.hero-video');
+  const heroOverlay = document.querySelector('.hero-overlay');
+  let lastScrollY = 0;
+
+  function updateParallax() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const translateVideo = Math.min(scrollY * 0.08, 50); // smooth offset
+    const translateOverlay = Math.min(scrollY * 0.04, 25);
+
+    if (heroVideo) heroVideo.style.transform = `translateY(${translateVideo}px) scale(1.35)`;
+    if (heroOverlay) heroOverlay.style.transform = `translateY(${translateOverlay}px) scale(1.2)`;
+
+    // toggle subtle blur as user scrolls down
+    if (scrollY > 50) document.body.classList.add('scrolled');
+    else document.body.classList.remove('scrolled');
+
+    lastScrollY = scrollY;
+  }
+
+  window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
+})();
