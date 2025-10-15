@@ -540,3 +540,47 @@ body {
     transform: translateY(24px);
   }
 }
+/* ==========================================================================
+   Crowsfiddled — Hero Parallax Motion Layer
+   Adds subtle scroll-based depth for premium visual effect
+   ========================================================================== */
+
+/* --- Parallax Wrapper Setup --- */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
+
+/* --- Hero Video Motion Layer --- */
+.hero-video {
+  transform: translateZ(-0.35px) scale(1.35);
+  transform-origin: center;
+  will-change: transform, filter;
+  transition: transform 0.4s ease-out, filter 0.4s ease;
+}
+
+/* --- Hero Overlay Motion Layer --- */
+.hero-overlay {
+  transform: translateZ(-0.2px) scale(1.2);
+  transform-origin: center;
+  will-change: transform, opacity;
+  transition: transform 0.4s ease-out, opacity 0.4s ease;
+}
+
+/* --- Responsive Safeguards --- */
+@media (max-width: 768px) {
+  .hero-section {
+    perspective: none;
+  }
+  .hero-video,
+  .hero-overlay {
+    transform: none !important;
+  }
+}
+
+/* --- Optional Soft Scroll Blur (for immersive look) --- */
+body.scrolled .hero-video {
+  filter: brightness(0.6) blur(1px);
+}
