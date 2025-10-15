@@ -584,3 +584,45 @@ body {
 body.scrolled .hero-video {
   filter: brightness(0.6) blur(1px);
 }
+
+/* =============================
+   FIX: Mobile Toggle Visibility
+   ============================= */
+
+.mobile-toggle {
+  display: block;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001; /* Ensure it's above the header */
+}
+
+.mobile-toggle .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: transform 0.28s ease, opacity 0.18s ease, background 0.25s ease;
+}
+
+/* When scrolled or header on hero — switch to gold or white */
+.site-header.scrolled .mobile-toggle .bar,
+.hero-section .mobile-toggle .bar {
+  background: var(--text); /* keep dark text on white background */
+}
+
+/* Optional premium contrast on hero (white over video background) */
+.hero-section .mobile-toggle .bar {
+  background: #fff;
+}
+
+/* Ensure visible on all devices */
+@media (max-width: 980px) {
+  .mobile-toggle {
+    position: relative;
+    z-index: 1001;
+  }
+}
