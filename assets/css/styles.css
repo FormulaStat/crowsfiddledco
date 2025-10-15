@@ -421,3 +421,122 @@ body {
   .nav { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
   .mobile-toggle { display: none; }
 }
+
+/* ==========================================================================
+   Crowsfiddled: Premium Motion Enhancements
+   Subtle fade-up + staggered reveals for sections
+   ========================================================================== */
+
+/* --- General Section Fade-Up on Scroll --- */
+.section.reveal,
+.cta-banner.reveal,
+.footer.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity, transform;
+}
+
+.section.reveal.visible,
+.cta-banner.reveal.visible,
+.footer.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Staggered Card Animations --- */
+.cards-grid .invest-card.reveal,
+.project-grid .project.reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.cards-grid .invest-card.reveal.visible,
+.project-grid .project.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* --- Section Title / Subtitle Fade Sequence --- */
+.section-title.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.section-title.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.section-sub.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
+}
+.section-sub.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- CTA Banner --- */
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s ease, opacity 1.2s ease;
+}
+.cta-banner.reveal.visible::before {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* --- Footer Fade-Up --- */
+.footer.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.footer.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Hero Sequence Enhancements --- */
+.hero-copy h1,
+.hero-copy .lead,
+.hero-ctas,
+.trust-strip,
+.hero-stats {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeUp 1.2s ease forwards;
+}
+.hero-copy h1 { animation-delay: 0.3s; }
+.hero-copy .lead { animation-delay: 0.5s; }
+.hero-ctas { animation-delay: 0.7s; }
+.trust-strip { animation-delay: 0.9s; }
+.hero-stats { animation-delay: 1.1s; }
+
+/* --- FadeUp Keyframes --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Small Devices Tweaks --- */
+@media (max-width: 640px) {
+  .section.reveal { transform: translateY(24px); }
+  .cards-grid .invest-card.reveal,
+  .project-grid .project.reveal {
+    transform: translateY(24px);
+  }
+}
