@@ -6,20 +6,23 @@
   <title>Crowsfiddled Company Ltd — Building Tomorrow's Property Wealth</title>
   <meta name="description" content="Crowsfiddled — Morocco-headquartered global real estate investment & partnerships. Engineering-led projects, fully regulated, cross-border investors welcome." />
   <meta property="og:title" content="Crowsfiddled — Real Estate Investment & Partnerships" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/images/hero-poster.jpg" />
+  <meta property="og:description" content="Premium real estate investment and partnership opportunities, registered and compliant under Moroccan and international financial authorities." />
   <link rel="icon" href="favicon.ico" />
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
-  <a class="skip-link" href="#home" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
-  
-  <!-- HEADER / NAV -->
+  <!-- Accessibility: Skip Link -->
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <!-- HEADER -->
   <header id="site-header" class="site-header" role="banner">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Crowsfiddled home">
+      <a href="index.html" class="brand" aria-label="Crowsfiddled home">
         <img src="assets/images/logo.png" alt="Crowsfiddled logo" class="logo" />
         <span class="brand-text">Crowsfiddled</span>
       </a>
@@ -38,12 +41,14 @@
       </nav>
 
       <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </button>
     </div>
   </header>
 
-  <!-- HERO -->
+  <!-- HERO SECTION -->
   <main>
     <section id="home" class="hero-section" aria-labelledby="hero-title">
       <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/images/hero-poster.jpg">
@@ -52,7 +57,7 @@
       <div class="hero-overlay"></div>
 
       <div class="container hero-inner">
-        <div class="hero-copy" >
+        <div class="hero-copy reveal">
           <h1 id="hero-title">Building Tomorrow’s Property Wealth</h1>
           <p class="lead">Curated real estate investments and strategic partnerships across Morocco and global markets — engineered for growth, managed for trust.</p>
           <div class="hero-ctas">
@@ -60,105 +65,105 @@
             <a class="btn btn-outline" href="#contact">Book Discovery Call</a>
           </div>
 
-          <ul class="trust-strip" aria-hidden="true">
+          <ul class="trust-strip">
             <li>International Financial Framework</li>
             <li>Morocco HQ — Casablanca</li>
             <li>Compliance: ANCFCC • DGI • IFSA</li>
           </ul>
         </div>
 
-        <div class="hero-stats" aria-hidden="true">
-          <div class="stat">
+        <div class="hero-stats">
+          <div class="stat reveal">
             <div class="stat-value" data-target="8">0</div>
             <div class="stat-label">Operating Cities</div>
           </div>
-          <div class="stat">
+          <div class="stat reveal">
             <div class="stat-value" data-target="25">0</div>
             <div class="stat-label">Projects Delivered</div>
           </div>
-          <div class="stat">
+          <div class="stat reveal">
             <div class="stat-value" data-target="28">0</div>
-            <div class="stat-label">Avg. ROI (%)</div>
+            <div class="stat-label">Average ROI (%)</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- QUICK INTRO -->
-    <section id="what" class="container section">
+    <!-- ABOUT / INTRO SECTION -->
+    <section id="what" class="container section reveal">
       <h2 class="section-title">What We Do</h2>
-      <p class="section-sub">We identify, develop and manage real estate investments designed for capital growth and income generation — with full legal compliance and engineering oversight.</p>
+      <p class="section-sub">We identify, develop, and manage real estate investments designed for capital growth, income generation, and sustainable value — under full Moroccan and international compliance.</p>
 
       <div class="cards-grid">
-        <article class="invest-card">
+        <article class="invest-card reveal">
           <h3>Land Acquisition & Flipping</h3>
-          <p>Targeted land buys, cadastral verification, minimal development and resale for capital uplift.</p>
+          <p>Targeted land acquisitions, cadastral verification, and strategic resale for capital uplift.</p>
         </article>
 
-        <article class="invest-card">
+        <article class="invest-card reveal">
           <h3>Residential Development</h3>
-          <p>Design and construct modern homes and gated communities with sustainable value in mind.</p>
+          <p>Design and construct modern homes and gated communities that define premium living standards.</p>
         </article>
 
-        <article class="invest-card">
+        <article class="invest-card reveal">
           <h3>Rental & Commercial Assets</h3>
-          <p>Long term rental portfolios and mixed-use developments for steady cashflow.</p>
+          <p>Mixed-use and rental properties built for long-term yield and stability in key growth markets.</p>
         </article>
 
-        <article class="invest-card">
+        <article class="invest-card reveal">
           <h3>Short-Let & Hospitality</h3>
-          <p>Premium short-stay units in high-demand business and tourist corridors.</p>
+          <p>Premium short-stay apartments and hospitality assets across high-demand Moroccan cities.</p>
         </article>
       </div>
     </section>
 
-    <!-- FEATURED PROJECTS (teaser) -->
+    <!-- FEATURED PROJECTS -->
     <section id="projects" class="container section projects-section">
-  <h2 class="section-title reveal">Featured Projects</h2>
-  <p class="section-sub reveal">Recent and ongoing projects demonstrating our execution and investor returns.</p>
+      <h2 class="section-title reveal">Featured Projects</h2>
+      <p class="section-sub reveal">Recent and ongoing developments reflecting our engineering precision and investor trust.</p>
 
-  <div class="project-grid">
-    <figure class="project reveal">
-      <img src="assets/images/project-1.jpg" alt="Sunrise Estates Casablanca development" loading="lazy">
-      <figcaption>
-        <h4>Sunrise Estates — Casablanca</h4>
-        <p>Residential community. Completed.</p>
-      </figcaption>
-    </figure>
+      <div class="project-grid">
+        <figure class="project reveal">
+          <img src="assets/images/project-1.jpg" alt="Sunrise Estates — Casablanca residential development" loading="lazy" />
+          <figcaption>
+            <h4>Sunrise Estates — Casablanca</h4>
+            <p>Residential community. Completed.</p>
+          </figcaption>
+        </figure>
 
-    <figure class="project reveal">
-      <img src="assets/images/project-2.jpg" alt="Golden Park Residence Marrakech development" loading="lazy">
-      <figcaption>
-        <h4>Golden Park Residence — Marrakech</h4>
-        <p>Mixed-use development. Ongoing.</p>
-      </figcaption>
-    </figure>
+        <figure class="project reveal">
+          <img src="assets/images/project-2.jpg" alt="Golden Park Residence — Marrakech mixed-use complex" loading="lazy" />
+          <figcaption>
+            <h4>Golden Park Residence — Marrakech</h4>
+            <p>Mixed-use development. Ongoing.</p>
+          </figcaption>
+        </figure>
 
-    <figure class="project reveal">
-      <img src="assets/images/project-3.jpg" alt="Rabat Short-Let Suites project" loading="lazy">
-      <figcaption>
-        <h4>Short-Let Suites — Rabat</h4>
-        <p>Hospitality units. Active.</p>
-      </figcaption>
-    </figure>
-  </div>
+        <figure class="project reveal">
+          <img src="assets/images/project-3.jpg" alt="Short-Let Suites — Rabat hospitality project" loading="lazy" />
+          <figcaption>
+            <h4>Short-Let Suites — Rabat</h4>
+            <p>Hospitality units. Active.</p>
+          </figcaption>
+        </figure>
+      </div>
 
-  <div class="projects-cta reveal">
-    <a class="btn btn-primary" href="projects.html">View Full Portfolio</a>
-  </div>
+      <div class="projects-cta reveal">
+        <a class="btn btn-primary" href="projects.html">View Full Portfolio</a>
+      </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-banner">
+    <!-- CALL TO ACTION -->
+    <section class="cta-banner reveal">
       <div class="container cta-inner">
         <h3>Ready to invest or partner?</h3>
-        <p>Request our Investment Pack and a personalised ROI projection for your capital.</p>
+        <p>Access our investor brochure and get a personalized ROI analysis for your capital.</p>
         <a class="btn btn-primary" href="assets/docs/investment-pack.pdf" target="_blank" rel="noopener">Request Brochure</a>
       </div>
     </section>
 
-    <!-- CONTACT & FOOTER -->
-    <footer id="contact" class="footer">
+    <!-- FOOTER -->
+    <footer id="contact" class="footer reveal">
       <div class="container footer-grid">
         <div class="footer-col">
           <h3>Crowsfiddled Company Ltd</h3>
@@ -176,7 +181,7 @@
         <div class="footer-col">
           <h4>Subscribe</h4>
           <form id="subscribe-form" class="subscribe-form" action="#" onsubmit="return false;" aria-label="Subscribe to updates">
-            <input id="subscribe-email" type="email" placeholder="Email address" aria-label="Email address" required>
+            <input id="subscribe-email" type="email" placeholder="Email address" required />
             <button class="btn btn-secondary" id="subscribe-btn" type="submit">Subscribe</button>
           </form>
         </div>
@@ -184,12 +189,12 @@
 
       <div class="container copyright">
         <div>© <span id="year"></span> Crowsfiddled Company Ltd. All rights reserved.</div>
-        <div class="muted">Disclaimer: Investments carry risk. See full terms & compliance for details.</div>
+        <div class="muted">Disclaimer: Investments carry risk. See full compliance disclosure for details.</div>
       </div>
     </footer>
   </main>
 
-  <!-- Scripts -->
+  <!-- External Script -->
   <script src="assets/js/scripts.js"></script>
 </body>
 </html>
