@@ -171,3 +171,26 @@
     });
   });
 })();
+
+/* ================================
+   Page Fade Transition
+   ================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  // Fade in effect when page loads
+  document.body.classList.add("fade-transition");
+  requestAnimationFrame(() => document.body.classList.add("page-loaded"));
+
+  // Fade out before navigating
+  document.querySelectorAll("a").forEach(link => {
+    const url = link.getAttribute("href");
+    if (!url || url.startsWith("http") || url.startsWith("#") || url.includes("mailto:")) return;
+
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      document.body.classList.remove("page-loaded");
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    });
+  });
+});
